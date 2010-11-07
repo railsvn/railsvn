@@ -1,6 +1,8 @@
 .article
-  - unless local_assigns[:no_title].present?
-    %h2.title= link_to article.title, article_path(article)
-  .body= simple_format(auto_link(h article.body))
-#comments
-
+  %h2.title= link_to article.title, article_path(article)
+  %ul.meta
+    %li.author= article.author.email
+    %li.time{ :title => article.created_at.to_s }== posted in #{time_ago_in_words(article.created_at)} ago
+    %li.num-comments
+      = link_to pluralize(article.comments.count, 'comment'), article_path(article, :anchor => 'comments')
+  .body= simple_format(auto_link(h(article.body)))

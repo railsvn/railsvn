@@ -1,0 +1,36 @@
+.article {
+  h2.title {
+    margin: 10px 0;
+    color: #4183C4;
+    a { color: inherit; }
+  }
+
+  ul.meta {
+    @include clearfix;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    color: #AAA;
+
+    .author{
+      float: left;
+      color: #94BFEA;
+      font-weight:bold;
+    }
+    .time {
+      float: left;
+      margin-left: 10px;
+    }
+    .num-comments {
+      padding-left: 18px;
+      background: center left transparent url("../../images/icons/comments.png") no-repeat;
+      float: right;
+      a { color: inherit; }
+    }
+
+  }
+
+  .body {
+    text-align: justify;
+  }
+}

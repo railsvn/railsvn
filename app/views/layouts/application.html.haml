@@ -1,7 +1,7 @@
 !!! html
 %html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
-    %title= yield(:title) || "Untitled"
+    %title= page_title
     = stylesheet_link_tag "application"
     = javascript_include_tag :defaults
     = csrf_meta_tag
@@ -9,15 +9,16 @@
   %body
     #header
       .wrapper
-        %h1#logo RailsVN
+        %h1#logo
+          = link_to 'RailsVN', root_url
         .navigation-wrapper
           = render 'layouts/top_navigation'
     #site
       .wrapper
-        #content
+        #main
           - flash.each do |name, msg|
             = content_tag :div, msg, :id => "flash_#{name}"
-          = content_tag :h1, yield(:title) if show_title?
+          -#= content_tag :h2, yield(:title) if show_title?
           = yield
         #side
     #footer

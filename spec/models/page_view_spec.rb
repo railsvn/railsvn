@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe PageView do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'shoule be failed' do
+    1.should == 1
+  end
 end

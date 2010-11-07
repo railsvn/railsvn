@@ -1,15 +1,20 @@
+#logo {
+  font-style:normal;
+  font-weight:bold;
+
+  float: left;
+  a {
+    color: inherit;
+    &:hover { text-decoration: none; }
+  }
+}
+
+
 #header {
-  height: 90px;
+  @include clearfix;
   background-color:#f7f7f7;
   @include gradient-background-color(#ffffff, #f0f0f0);
   border-bottom: 1px solid #CCC;
-
-  #logo {
-    font-style:normal;
-    font-weight:bold;
-
-    float: left;
-  }
 
   ul.navigation {
     list-style-type: none;
@@ -30,7 +35,6 @@
       border-left: 1px solid #DDD;
       a {
         color: #4183C4;
-        text-decoration: none;
       }
       @include text-shadow(1px, 1px, 0, #FFFFFF);
 

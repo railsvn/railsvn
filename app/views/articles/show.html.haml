@@ -1,11 +1,9 @@
-- title @article.title
-= render @article, :no_title => true
+- page_title @article.title
+
+= render @article
 %div
-  = link_to 'Back to articles', articles_path
-  |
-  = link_to "Edit", edit_article_path(@article)
-  |
-  = link_to "Destroy", article_path(@article), :method => :delete, :confirm => 'Do you want to destroy this article'
+  = link_to "Edit", edit_article_path(@article), :class => 'edit-link'
+  = link_to "Delete", article_path(@article), :method => :delete, :confirm => 'Do you want to destroy this article', :class => 'delete-link'
 #comments-section
   %a{:name => 'comments'}
 

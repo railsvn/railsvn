@@ -9,8 +9,28 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 @import 'header';
 @import 'footer';
+
+#main {
+  width: 700px;
+  float: left;
+}
+
+#side {
+  width: 200px;
+  float: right;
+}
+#site {
+  @include clearfix;
+}
 
 @mixin flash-message {
   padding: 5px 8px;
