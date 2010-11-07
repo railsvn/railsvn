@@ -1,12 +1,11 @@
 .comment{ :"data-id" => comment.id }
-  %p
-    = comment.author.email
-    == commented #{time_ago_in_words(comment.created_at)}
-  %p= simple_format(comment.body)
-  %p
-    - if comment.created_at != comment.updated_at
-      == updated at #{time_ago_in_words(comment.updated_at)}
-    - if user_signed_in? && (current_user.admin? || comment.author == current_user)
-      = link_to 'Edit', edit_comment_url(comment)
-      = link_to 'Delete', comment_url(comment), :method => :delete, :confirm => 'Do you want to delete this comment?'
-      
+  %ul.meta
+    %li.author
+      = image_tag comment.author.avatar_url(:tiny), :class => 'avatar'
+      = comment.author.email
+    %li.time{ :title => comment.created_at.to_s }== #{time_ago_in_words(comment.created_at)} ago
+  %p.body= simple_format(auto_link(h(comment.body)))
+  - if user_signed_in? && (current_user.admin? || comment.author == current_user)
+    .actions
+      = link_to 'Edit', edit_comment_url(comment), :class => 'edit-link'
+      = link_to 'Delete', comment_url(comment), :method => :delete, :confirm => 'Do you want to delete this comment?', :class => 'delete-link'

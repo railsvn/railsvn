@@ -12,10 +12,19 @@
     list-style-type: none;
     color: #AAA;
 
+    li {
+      height: 20px;
+    }
     .author{
       float: left;
       color: #94BFEA;
       font-weight:bold;
+
+      img.avatar {
+        border: 1px solid #CCC;
+        padding: 1px;
+        vertical-align: middle;
+      }
     }
     .time {
       float: left;
@@ -32,5 +41,43 @@
 
   .body {
     text-align: justify;
+  }
+}
+
+.comments {
+  .comment {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #CCC;
+
+    .meta {
+      @include clearfix;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      background: center right transparent url('../images/icons/comment.png') no-repeat;
+      padding-right: 18px;
+
+      .author {
+        float: left;
+        color: #94BFEA;
+        font-weight:bold;
+        img.avatar {
+          border: 1px solid #CCC;
+          padding: 1px;
+          vertical-align: middle;
+        }
+      }
+      .time {
+        float: right;
+        color: #AAA;
+      }
+    }
+    .body {
+      text-align: justify;
+    }
+    .actions {
+      text-align: right;
+    }
   }
 }

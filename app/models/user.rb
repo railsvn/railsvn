@@ -16,4 +16,22 @@ class User < ActiveRecord::Base
 
   has_many :articles, :foreign_key => :author_id, :dependent => :destroy
   has_many :comments, :foreign_key => :author_id, :dependent => :delete_all
+
+  AVATAR_SIZES = {
+      :tiny   => 16,
+      :small  => 40,
+      :normal => 80,
+      :large  => 160,
+      :huge   => 320,
+  }
+
+  def avatar_url(size = :normal)
+    size_in_pixel = AVATAR_SIZES[size] || 80 
+    self.gavatar_url(AVATAR_SIZES[size])
+  end
+
+  def gavatar_url(size = 80)
+    hash = Digest::MD5.hexdigest(self.email)
+    "http://www.gravatar.com/avatar/#{hash}.png?d=wavatar&s=#{size}"
+  end
 end

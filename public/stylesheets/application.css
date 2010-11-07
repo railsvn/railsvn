@@ -198,10 +198,16 @@ a {
     display: block; }
   * html .article ul.meta {
     height: 1%; }
+  .article ul.meta li {
+    height: 20px; }
   .article ul.meta .author {
     float: left;
     color: #94BFEA;
     font-weight: bold; }
+    .article ul.meta .author img.avatar {
+      border: 1px solid #CCC;
+      padding: 1px;
+      vertical-align: middle; }
   .article ul.meta .time {
     float: left;
     margin-left: 10px; }
@@ -213,6 +219,44 @@ a {
       color: inherit; }
 .article .body {
   text-align: justify; }
+
+.comments .comment {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #CCC; }
+  .comments .comment .meta {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    background: center right transparent url("../images/icons/comment.png") no-repeat;
+    padding-right: 18px; }
+    .comments .comment .meta:after {
+      content: ".";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0; }
+    html[xmlns] .comments .comment .meta {
+      display: block; }
+    * html .comments .comment .meta {
+      height: 1%; }
+    .comments .comment .meta .author {
+      float: left;
+      color: #94BFEA;
+      font-weight: bold; }
+      .comments .comment .meta .author img.avatar {
+        border: 1px solid #CCC;
+        padding: 1px;
+        vertical-align: middle; }
+    .comments .comment .meta .time {
+      float: right;
+      color: #AAA; }
+  .comments .comment .body {
+    text-align: justify; }
+  .comments .comment .actions {
+    text-align: right; }
 
 .error_messages {
   width: 400px;

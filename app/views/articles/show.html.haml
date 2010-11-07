@@ -6,6 +6,7 @@
   = link_to "Delete", article_path(@article), :method => :delete, :confirm => 'Do you want to destroy this article', :class => 'delete-link'
 #comments-section
   %a{:name => 'comments'}
+  %h2= pluralize(@article.comments.count, 'comment')
 
   .post-comment-form
     - if user_signed_in?
