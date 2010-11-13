@@ -131,11 +131,11 @@ a {
           height: 50px; }
 
 #main {
-  width: 700px;
+  width: 600px;
   float: left; }
 
 #side {
-  width: 200px;
+  width: 300px;
   float: right; }
 
 #site {
@@ -163,6 +163,26 @@ a {
   margin: 10px 0;
   background-color: #FCC;
   border: solid 1px #C66; }
+
+.feed-buttons {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #CCC; }
+  .feed-buttons a {
+    color: #4183C4; }
+
+.recent-articles-section h3 {
+  color: #536e88;
+  font-size: 16px; }
+.recent-articles-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; }
+  .recent-articles-section ul a.title {
+    display: block;
+    color: #4183C4; }
+  .recent-articles-section ul span.meta {
+    color: #888;
+    font-size: 12px; }
 
 .edit-link {
   padding-left: 20px;
