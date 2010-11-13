@@ -1,4 +1,4 @@
-require 'rspec/core'
+#require 'rspec/core'
 require 'rspec/core/rake_task'
 
 spec_prereq = Rails.root.join('config', 'database.yml').exist? ? "db:test:prepare" : :noop
