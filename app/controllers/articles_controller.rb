@@ -3,7 +3,12 @@ class ArticlesController < ApplicationController
   before_filter :require_admin!, :except => [:show, :index]
   
   def index
-    @articles = Article.all
+    @articles = Article.recent
+
+    respond_to do |format|
+      format.html
+      format.atom
+    end
   end
 
   def show

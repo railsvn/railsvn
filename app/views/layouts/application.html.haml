@@ -4,6 +4,7 @@
     %title= page_title
     = stylesheet_link_tag "application"
     = javascript_include_tag :defaults
+    == <link href="#{articles_url(:format => 'atom')}" type="application/atom+xml" rel="alternate" title="RailsVN articles" />
     = csrf_meta_tag
     = yield(:head)
   %body

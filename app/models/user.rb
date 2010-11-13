@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
     hash = Digest::MD5.hexdigest(self.email)
     "http://www.gravatar.com/avatar/#{hash}.png?d=wavatar&s=#{size}"
   end
+
+  def display_name
+    self.email
+  end
 end
