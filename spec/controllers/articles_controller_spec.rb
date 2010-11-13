@@ -13,15 +13,15 @@ describe ArticlesController do
   
   context 'with authenticated user,' do
     before(:each) do
-      @user = Factory.create(:admin_user)
-      sign_in :user, @user
+      @current_user = Factory.create(:admin_user)
+      sign_in :user, @current_user
     end
 
     describe "GET 'index'" do
       it "should assign variables" do
         @article = Factory.create(:article)
         get :index
-        assigns(:articles).should eql([@article])
+        assigns(:articles).should == [@article]
       end
 
       it "should be success" do
@@ -65,13 +65,13 @@ describe ArticlesController do
     describe "POST 'create'" do
       context "with valid params," do
         before(:each) do
-          @model = mock_model(Article, {:save => true})
+          @model = mock_model(Article, {:save => true, :"author=" => nil })
           Article.should_receive(:new).with('these' => 'params').and_return(@model)
         end
 
         it "should assign a new article as @article" do
           post :create, :article => {'these' => 'params'}
-          assigns[:article].should eql(@model)
+          assigns[:article].should == @model
         end
 
         it "should redirect to the article for html format" do
@@ -82,7 +82,7 @@ describe ArticlesController do
 
       context "with invalid params," do
         before(:each) do
-          @model = mock_model(Article, {:save => false})
+          @model = mock_model(Article, {:save => false, :"author=" => nil})
           Article.should_receive(:new).with('these' => 'invalid params').and_return(@model)
         end
 

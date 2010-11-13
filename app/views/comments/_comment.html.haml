@@ -2,7 +2,7 @@
   %ul.meta
     %li.author
       = image_tag comment.author.avatar_url(:tiny), :class => 'avatar'
-      = comment.author.email
+      = comment.author.display_name
     %li.time{ :title => comment.created_at.to_s }== #{time_ago_in_words(comment.created_at)} ago
   %p.body= simple_format(auto_link(h(comment.body)))
   - if user_signed_in? && (current_user.admin? || comment.author == current_user)

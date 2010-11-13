@@ -2,6 +2,8 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe User do
   describe "validations" do
+    it { should validate_presence_of(:display_name) }
+
     it { should validate_presence_of(:email) }
     it "should validate uniqueness of email" do
       Factory.create(:user)

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :registerable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :display_name
 
   validates :email, :presence => true,
                     :uniqueness => true,
@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   validates :password, :presence => { :on => :create },
                        :length => { :within => 6..20, :allow_blank => true },
                        :confirmation => true
+  validates :display_name, :presence => true,
+                          :length => { :within => 4..100 }
 
   has_many :articles, :foreign_key => :author_id, :dependent => :destroy
   has_many :comments, :foreign_key => :author_id, :dependent => :delete_all
@@ -27,15 +29,11 @@ class User < ActiveRecord::Base
 
   def avatar_url(size = :normal)
     size_in_pixel = AVATAR_SIZES[size] || 80 
-    self.gavatar_url(AVATAR_SIZES[size])
+    self.gavatar_url(size_in_pixel)
   end
 
   def gavatar_url(size = 80)
     hash = Digest::MD5.hexdigest(self.email)
     "http://www.gravatar.com/avatar/#{hash}.png?d=wavatar&s=#{size}"
-  end
-
-  def display_name
-    self.email
   end
 end

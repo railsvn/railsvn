@@ -3,7 +3,7 @@
   %ul.meta
     %li.author
       = image_tag article.author.avatar_url(:tiny), :class => 'avatar'
-      = article.author.email
+      = article.author.display_name
     %li.time{ :title => article.created_at.to_s }== posted #{time_ago_in_words(article.created_at)} ago
     %li.num-comments
       = link_to pluralize(article.comments.count, 'comment'), article_path(article, :anchor => 'comments')
