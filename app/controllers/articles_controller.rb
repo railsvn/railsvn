@@ -20,7 +20,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    unauthorized! if !current_user.admin?
+
     @article = Article.new(params[:article])
+    @article.author = current_user
     if @article.save
       redirect_to article_path(@article)
     else
@@ -34,6 +37,8 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
+    unauthorized! if !current_user.admin? && @article.author != current_user
+
     if @article.update_attributes(params[:article])
       redirect_to article_path(@article)
     else
@@ -43,6 +48,8 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
+    unauthorized! if !current_user.admin? && @article.author != current_user
+    
     @article.destroy
     
     redirect_to articles_path
