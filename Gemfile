@@ -16,8 +16,9 @@ group :development do
   gem 'rails3-generators'
 end
 
-gem 'rspec', '~>2.0'
+gem 'rspec-core', '~>2.0'
 group :test do
+  gem 'rspec', '~>2.0'
   gem "shoulda", :require => 'shoulda'
   gem 'rspec-rails', '~>2.0'
   gem 'factory_girl_rails'

@@ -7,4 +7,4 @@
     %li.time{ :title => article.created_at.to_s }== posted #{time_ago_in_words(article.created_at)} ago
     %li.num-comments
       = link_to pluralize(article.comments.count, 'comment'), article_path(article, :anchor => 'comments')
-  .body= simple_format(auto_link(h(article.body)))
+  .body= sanitize(article.body)

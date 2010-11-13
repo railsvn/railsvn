@@ -113,6 +113,7 @@ DEPENDENCIES
   rails (~> 3.0)
   rails3-generators
   rspec (~> 2.0)
+  rspec-core (~> 2.0)
   rspec-rails (~> 2.0)
   shoulda
   simple_form
