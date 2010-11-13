@@ -5,6 +5,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'haml'
 gem 'jquery-rails'
+gem 'coderay'
 
 group :production do
   gem 'pg'
