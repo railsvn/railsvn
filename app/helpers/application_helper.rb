@@ -7,7 +7,7 @@ module ApplicationHelper
   def code_syntax(html)
     html.gsub(/<pre><code lang="(.*?)">(.*?)<\/code><\/pre>/m) do |a|
       lang = $1
-      code = $2
+      code = CGI.unescapeHTML($2)
       CodeRay.scan(code, :ruby).div(:css => :class)
     end
   end
