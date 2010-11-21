@@ -1,15 +1,20 @@
-- content_for :head do
-  = javascript_include_tag 'wymeditor/jquery.wymeditor.pack'
-
 = simple_form_for @article do |f|
   = f.error_messages
   .inputs
     = f.input :title
+    = f.input :source_format, :as => :select, :collection => Article.source_format_options, :include_blank => false
   .textarea
-    = f.text_area :body
+    = f.text_area :body, :'data-source-format' => @article.source_format
   .buttons
     = f.submit
+    = f.submit 'Preview', :name => :preview, :id => 'article_preview'
+
+- content_for :head do
+  = javascript_include_tag 'wymeditor/jquery.wymeditor.pack'
 :javascript
   $(function() {
-      $('#article_body').wymeditor();
+    $('#article_body[data-source-format=html]').wymeditor();
+    $('#article_source_format').change(function() {
+      $('#article_preview').click();
+    });
   });

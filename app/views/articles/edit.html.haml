@@ -1,4 +1,9 @@
 - page_title 'Edit Article'
+
+- if params['preview']
+  = render_article(@article)
+  %hr
+
 = render 'form'
 %div
   = link_to 'Back to articles', articles_path

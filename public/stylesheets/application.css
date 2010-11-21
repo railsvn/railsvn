@@ -656,5 +656,9 @@ form.simple_form .input {
     clear: both;
     padding-left: 20px;
     background: url("../images/icons/exclamation.png") center left no-repeat; }
+form.simple_form .textarea {
+  margin-top: 10px; }
+  form.simple_form .textarea textarea {
+    width: 100%; }
 form.simple_form .buttons {
   padding-left: 120px; }

@@ -101,12 +101,12 @@ describe ArticlesController do
     describe "PUT 'update'" do
       context "with valid params," do
         before(:each) do
-          @model = mock_model(Article, {:update_attributes => true})
+          @model = stub_model(Article, {:valid? => true})
           Article.stub(:find).with('article_id').and_return(@model)
         end
 
         it "should update article" do
-          @model.should_receive(:update_attributes).with({'these' => 'params'})
+          @model.should_receive(:attributes=).with({'these' => 'params'})
           put :update, :id => 'article_id', :article => {'these' => 'params'}
         end
 
@@ -123,7 +123,7 @@ describe ArticlesController do
 
       context "with invalid params," do
         before(:each) do
-          @model = mock_model(Article, {:update_attributes => false})
+          @model = stub_model(Article, {:valid? => false})
           Article.stub(:find).with('article_id').and_return(@model)
         end
 

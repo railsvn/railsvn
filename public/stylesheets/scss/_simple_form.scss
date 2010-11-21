@@ -63,6 +63,14 @@ form.simple_form {
     }
   }
 
+  .textarea {
+    margin-top: 10px;
+
+    textarea {
+      width: 100%;
+    }
+  }
+
   .buttons {
     padding-left: $form_label_width + $form_label_padding;
   }

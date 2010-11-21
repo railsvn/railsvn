@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
     @article = Article.new(params[:article])
     @article.author = current_user
-    if @article.save
+    if params[:preview].blank? && @article.save
       redirect_to article_path(@article)
     else
       render :action => :new
@@ -39,7 +39,8 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     unauthorized! if !current_user.admin? && @article.author != current_user
 
-    if @article.update_attributes(params[:article])
+    @article.attributes = params[:article]
+    if params[:preview].blank? && @article.save
       redirect_to article_path(@article)
     else
       render :action => :edit
@@ -53,6 +54,10 @@ class ArticlesController < ApplicationController
     @article.destroy
     
     redirect_to articles_path
+  end
+
+  def preview
+    
   end
 
 end

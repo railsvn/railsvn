@@ -8,4 +8,4 @@
     %li.num-comments
       = link_to pluralize(article.comments.count, 'comment'), article_path(article, :anchor => 'comments')
   .body
-    ~ sanitize(code_syntax(article.body))
+    ~ render_article(article)

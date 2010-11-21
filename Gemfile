@@ -3,9 +3,10 @@ source :gemcutter
 gem 'rails', '~>3.0'
 gem 'devise'
 gem 'simple_form'
-gem 'haml'
+gem 'haml'  
 gem 'jquery-rails'
 gem 'coderay'
+gem 'kramdown'
 
 group :production do
   gem 'pg'
@@ -24,4 +25,6 @@ group :test do
   gem 'rspec-rails', '~>2.0'
   gem 'factory_girl_rails'
   gem 'simplecov'
+  gem 'autotest'
+  gem 'autotest-notification'
 end
