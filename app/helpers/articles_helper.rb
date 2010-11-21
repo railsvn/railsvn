@@ -18,6 +18,6 @@ module ArticlesHelper
   end
 
   def render_html(text)
-    text
+    sanitize(text)
   end
 end
