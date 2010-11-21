@@ -641,7 +641,7 @@ form.simple_form .input {
     margin-right: 20px;
     display: inline-block;
     text-align: right;
-    width: 100px; }
+    width: 150px; }
     form.simple_form .input label abbr {
       float: right;
       width: 0;
@@ -650,9 +650,11 @@ form.simple_form .input {
     width: 300px; }
   form.simple_form .input textarea.text {
     height: 100px; }
+  form.simple_form .input.boolean {
+    padding-left: 170px; }
   form.simple_form .input span.error {
     display: block;
-    margin-left: 120px;
+    margin-left: 170px;
     clear: both;
     padding-left: 20px;
     background: url("../images/icons/exclamation.png") center left no-repeat; }
@@ -661,4 +663,4 @@ form.simple_form .textarea {
   form.simple_form .textarea textarea {
     width: 100%; }
 form.simple_form .buttons {
-  padding-left: 120px; }
+  padding-left: 170px; }

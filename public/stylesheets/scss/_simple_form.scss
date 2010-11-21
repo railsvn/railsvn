@@ -1,4 +1,4 @@
-$form_label_width: 100px;
+$form_label_width: 150px;
 $form_label_padding: 20px;
 
 .error_messages {
@@ -52,6 +52,10 @@ form.simple_form {
     }
     textarea.text {
       height: 100px;
+    }
+
+    &.boolean {
+        padding-left: $form_label_width + $form_label_padding;
     }
 
     span.error {

@@ -3,6 +3,7 @@
   .inputs
     = f.input :title
     = f.input :source_format, :as => :select, :collection => Article.source_format_options, :include_blank => false
+    = f.input :published
   .textarea
     = f.text_area :body, :'data-source-format' => @article.source_format
   .buttons

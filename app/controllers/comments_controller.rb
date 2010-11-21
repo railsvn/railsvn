@@ -3,11 +3,15 @@ class CommentsController < ApplicationController
 
   def new
     @article = Article.find(params[:article_id])
+    unauthorized!('This article has not published yet') unless @article.published?
+
     redirect_to article_path(@article), :alert => 'comment must posted in article'
   end
 
   def create
     @article = Article.find(params[:article_id])
+    unauthorized!('This article has not published yet') unless @article.published?
+    
     @comment = @article.comments.build(params[:comment])
     @comment.author = current_user
     if @comment.save

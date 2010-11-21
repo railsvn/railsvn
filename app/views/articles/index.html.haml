@@ -1,3 +1,5 @@
 = render :collection => @articles, :partial => 'article'
-%div
-  = link_to 'New article', new_article_path
+- if user_signed_in? && current_user.admin? 
+  %div
+    = link_to 'New article', new_article_path
+    = link_to 'All articles', all_articles_path

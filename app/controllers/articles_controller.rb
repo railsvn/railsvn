@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_filter :require_admin!, :except => [:show, :index]
   
   def index
-    @articles = Article.recent
+    @articles = Article.recent.published
 
     respond_to do |format|
       format.html
@@ -11,8 +11,18 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # TODO: move this to admin area
+  def all
+    @articles = Article.all
+
+    render :action => 'index'
+  end
+
   def show
     @article = Article.find(params[:id])
+    if !@article.published && !(user_signed_in? && current_user.admin?)
+      unauthorized!('This article has not published yet')
+    end
   end
 
   def new
@@ -54,10 +64,6 @@ class ArticlesController < ApplicationController
     @article.destroy
     
     redirect_to articles_path
-  end
-
-  def preview
-    
   end
 
 end
