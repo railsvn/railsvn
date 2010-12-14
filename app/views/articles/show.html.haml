@@ -1,9 +1,11 @@
 - page_title @article.title
 
 = render @article
-%div
-  = link_to "Edit", edit_article_path(@article), :class => 'edit-link'
-  = link_to "Delete", article_path(@article), :method => :delete, :confirm => 'Do you want to destroy this article', :class => 'delete-link'
+
+- if current_user && current_user.admin?
+  %div
+    = link_to "Edit", edit_article_path(@article), :class => 'edit-link'
+    = link_to "Delete", @article, :method => :delete, :confirm => 'Do you want to destroy this article', :class => 'delete-link'
 #comments-section
   %a{:name => 'comments'}
   %h2= pluralize(@article.comments.count, 'comment')

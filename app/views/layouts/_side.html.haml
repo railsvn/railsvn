@@ -7,6 +7,6 @@
   %ul.recent-articles
     - recent_articles.each do |article|
       %li
-        = link_to article.title, article_path(article), :class => 'title'
+        = link_to article.title, friendly_article_path(article), :class => 'title'
         %span.meta== #{article.author.display_name} on #{article.created_at.strftime('%b %d, %Y')}
 

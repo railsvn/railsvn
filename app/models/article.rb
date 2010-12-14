@@ -8,6 +8,11 @@ class Article < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
   has_many :comments, :dependent => :delete_all
 
+  has_friendly_id :title, :use_slug => true
+  def to_param
+    self.id.to_s
+  end
+
   validates :title, :presence => true
   validates :body, :presence => true
 

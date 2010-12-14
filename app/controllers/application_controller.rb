@@ -1,6 +1,8 @@
 class ActionUnauthorized < Exception; end
 
 class ApplicationController < ActionController::Base
+  include FriendlyUrlHelper
+
   protect_from_forgery
   layout 'application'
 
@@ -17,7 +19,7 @@ protected
 
   def record_page_view
     if request.get? && !request.xhr?
-      PageView.create!(:request_uri => request.request_uri,
+      PageView.create!(:request_uri => request.fullpath,
                        :ip => request.remote_ip,
                        :user_agent => request.user_agent,
                        :referrer => request.referrer,

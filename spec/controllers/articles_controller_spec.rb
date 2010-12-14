@@ -76,7 +76,7 @@ describe ArticlesController do
 
         it "should redirect to the article for html format" do
           post :create, :article => {'these' => 'params'}, :format => 'html'
-          response.should redirect_to(article_url(@model))
+          response.should redirect_to(friendly_article_url(@model))
         end
       end
 
@@ -117,7 +117,7 @@ describe ArticlesController do
 
         it "should redirect to the article for html format" do
           put :update, :id => 'article_id', :article => {'these' => 'params'}, :format => 'html'
-          response.should redirect_to(article_url(@model))
+          response.should redirect_to(friendly_article_url(@model))
         end
       end
 

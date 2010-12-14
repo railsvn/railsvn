@@ -20,6 +20,14 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+
+    if !params[:friendly] || !@article.friendly_id_status.best? ||
+        @article.created_at.year != params[:year].to_i  ||
+        @article.created_at.month != params[:month].to_i
+      
+      redirect_to friendly_article_path(@article), :status => :moved_permanently
+    end
+    
     if !@article.published && !(user_signed_in? && current_user.admin?)
       unauthorized!('This article has not published yet')
     end
@@ -35,7 +43,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     @article.author = current_user
     if params[:preview].blank? && @article.save
-      redirect_to article_path(@article)
+      redirect_to friendly_article_path(@article)
     else
       render :action => :new
     end
@@ -51,7 +59,7 @@ class ArticlesController < ApplicationController
 
     @article.attributes = params[:article]
     if params[:preview].blank? && @article.save
-      redirect_to article_path(@article)
+      redirect_to friendly_article_path(@article)
     else
       render :action => :edit
     end

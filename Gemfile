@@ -7,6 +7,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'coderay'
 gem 'kramdown'
+gem "friendly_id", "~> 3.1"
 
 # NOTE: bellow line make rspec.rake runnable (because it depends on RSpec::Core::RakeTask)
 # TODO: rspec.rake should not require rspec gem
