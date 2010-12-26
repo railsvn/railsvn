@@ -646,7 +646,11 @@ form.simple_form .input {
       float: right;
       width: 0;
       color: #F00; }
-  form.simple_form .input input.string, form.simple_form .input textarea.text {
+    form.simple_form .input label.boolean {
+      width: auto;
+      text-align: left;
+      margin-right: 0; }
+  form.simple_form .input input.string, form.simple_form .input input.password, form.simple_form .input textarea.text {
     width: 300px; }
   form.simple_form .input textarea.text {
     height: 100px; }
@@ -663,4 +667,5 @@ form.simple_form .textarea {
   form.simple_form .textarea textarea {
     width: 100%; }
 form.simple_form .buttons {
+  margin-top: 10px;
   padding-left: 170px; }

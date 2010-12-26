@@ -3,6 +3,7 @@
 
 nbproject
 .idea
+.project
 
 db/*.sqlite3
 log/*.log

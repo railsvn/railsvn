@@ -45,9 +45,15 @@ form.simple_form {
         width: 0;
         color: #F00;
       }
+
+      &.boolean {
+        width: auto;
+        text-align: left;
+        margin-right: 0;
+      }
     }
 
-    input.string, textarea.text {
+    input.string, input.password, textarea.text {
       width: 300px;
     }
     textarea.text {
@@ -76,6 +82,7 @@ form.simple_form {
   }
 
   .buttons {
+    margin-top: 10px;
     padding-left: $form_label_width + $form_label_padding;
   }
 }
